@@ -1,2 +1,82 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+
+namespace Homework4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Call Q1_method()
+            Q1_method();
+
+            // Call Q2_method()
+            Q2_method();
+        }
+
+        
+        static void Q1_method()
+        {
+            Console.WriteLine("Q1: Finding the largest of two numbers.");
+            Console.Write("Enter the first number: ");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the second number: ");
+            int num2 = Convert.ToInt32(Console.ReadLine());
+
+            int largest = FindLargest(num1, num2);
+            Console.WriteLine($"The largest number is: {largest}");
+            Console.WriteLine(); 
+        }
+
+        static int FindLargest(int a, int b)
+        {
+            return a > b ? a : b;
+        }
+
+               static void Q2_method()
+        {
+            Console.WriteLine("Q2: Drawing a triangle based on the shape.");
+            Console.Write("Enter the height of the triangle (N): ");
+            int N = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the shape (left or right): ");
+            string shape = (Console.ReadLine()).ToLower();
+
+            PrintTriangle(N, shape);
+        }
+
+        static void PrintTriangle(int N, string shape)
+        {
+            Console.WriteLine($"N: {N}, Shape: {shape}");
+
+            if (shape == "left")
+            {
+                for (int i = 1; i <= N; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                    {
+                        Console.Write("* ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else if (shape == "right")
+            {
+                for (int i = 1; i <= N; i++)
+                {
+                    for (int j = 1; j <= N - i; j++)
+                    {
+                        Console.Write("  "); 
+                    }
+                    for (int j = 1; j <= i; j++)
+                    {
+                        Console.Write("* ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid shape entered. Please enter 'left' or 'right'.");
+            }
+        }
+    }
+}
